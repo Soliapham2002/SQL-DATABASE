@@ -1,0 +1,17 @@
+##Query: For each store, retrieve the store number, store name, and the number of store visits that occurred in that store. 
+SELECT si.store_nbr, store_name, sum(tot_visit_amt) 
+FROM store_info si
+JOIN visit vis
+ON si.store_nbr = vis.store_nbr
+GROUP BY si.store_nbr, store_name;
+ 
+##Query: Using the table item_scan, retrieve the total number of records in the table item_scan, as well as the price of the most expensive item ever sold (i.e. the highest unit_retail_amount) 
+SELECT COUNT(*) store_nbr, MAX(unit_qty) highest_retail_amount
+FROM ITEM_SCAN;	
+ 
+##Find the average total visit amount for each store
+SELECT si.store_nbr, store_name, avg(tot_visit_amt) Average_visit
+FROM store_info si
+JOIN visit vis
+ON si.store_nbr = vis.store_nbr
+GROUP BY si.store_nbr, store_name;
